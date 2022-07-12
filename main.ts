@@ -1,4 +1,5 @@
 // 706
+//Code by saschs
 input.onButtonPressed(Button.A, function () {
     starttime = input.runningTime()
     while (true) {
