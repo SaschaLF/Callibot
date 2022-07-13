@@ -1,5 +1,4 @@
-// 706
-//Code by saschs
+//Code by Sascha
 input.onButtonPressed(Button.A, function () {
     starttime = input.runningTime()
     while (true) {
@@ -37,5 +36,5 @@ input.onButtonPressed(Button.A, function () {
 let endtime = 0
 let amobjectvorbei = false
 let starttime = 0
-//calliBot2.entfernung(C2Einheit.cm)
+
 
