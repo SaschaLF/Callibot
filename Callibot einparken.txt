@@ -1,0 +1,72 @@
+input.onButtonPressed(Button.A, function () {
+    //rausfahren
+    calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30);
+    calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts,40);
+    basic.pause(fahrtbegin);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    //abbiegenlinks
+    calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 30)
+      calliBot2.motor(C2Motor.rechts,C2Dir.vorwärts, 40)
+    basic.pause(drehung);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    while(true){
+        //fahren geradeaus
+    calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30);
+    calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts,40);
+    basic.pause(fahrnormal);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    //abbiegenlinks
+    calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 30)
+      calliBot2.motor(C2Motor.rechts,C2Dir.vorwärts, 40)
+    basic.pause(drehung);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    //skenntempo
+    calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 30/4);
+    calliBot2.motor(C2Motor.rechts, C2Dir.rückwärts,40/4);
+    basic.pause(fahrtbegin);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    if(calliBot2.entfernung(C2Einheit.cm)<20){
+        calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+        calliBot2.motor(C2Motor.rechts,C2Dir.rückwärts, 40)
+        basic.pause(drehung*2);
+        calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+        calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 30);
+        calliBot2.motor(C2Motor.rechts, C2Dir.rückwärts,40);
+        basic.pause(fahrtbegin);
+        calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+        checkcounter =0;
+        break;
+    }
+    //skenntempo
+    calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30/4);
+    calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts,40/4);
+    basic.pause(fahrtbegin);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    //abbiegerechts
+    calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+      calliBot2.motor(C2Motor.rechts,C2Dir.rückwärts, 40)
+    basic.pause(drehung);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    checkcounter+=1
+    if(checkcounter ==3){
+    calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 30);
+    calliBot2.motor(C2Motor.rechts, C2Dir.rückwärts,40);
+    basic.pause(fahrtbegin);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+    calliBot2.motor(C2Motor.rechts,C2Dir.rückwärts, 40)
+    basic.pause(drehung);
+    calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen);
+    checkcounter = 0;
+    }
+    }
+})
+let checkcounter =0;
+let fahrtbegin = 800;
+let fahrnormal = 925;
+let drehung=525;
+let fahrt =3500;
+
+
+basic.forever(function () {	
+})

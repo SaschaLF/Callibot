@@ -1,0 +1,36 @@
+input.onButtonPressed(Button.A, function () {
+    while (true) {
+        if (calliBot2.readLineSensor(C2Sensor.rechts, C2SensorStatus.hell)) {
+            calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, movement)
+            basic.pause(10)
+            calliBot2.motorStop(C2Motor.rechts, C2Stop.Bremsen)
+        } else if (calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.hell)) {
+            calliBot2.motor(C2Motor.links, C2Dir.vorwärts, movement)
+            basic.pause(10)
+            calliBot2.motorStop(C2Motor.links, C2Stop.Bremsen)
+        } else {
+            calliBot2.motor(C2Motor.beide, C2Dir.vorwärts, movement)
+            basic.pause(10)
+            calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen)
+        }
+        if (calliBot2.entfernung(C2Einheit.cm) <= 10) {
+            radio.sendString("Hup! Hup!")
+            music.playTone(262, music.beat(1))
+
+            movement = slow
+        }
+    }
+})
+radio.onReceivedString(function (receivedString) {
+    movement = speed
+    basic.showString(receivedString)
+    
+    
+})
+let movement = 0
+let speed = 0
+let slow = 0
+slow = 20
+speed = 100
+movement = speed
+radio.setGroup(69)
