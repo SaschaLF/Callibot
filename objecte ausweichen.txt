@@ -1,0 +1,108 @@
+basic.forever(function () {
+	
+})
+
+input.onButtonPressed(Button.A, function () {
+    while(true){
+
+        if(calliBot2.entfernung(C2Einheit.cm)<10){
+            if(urzeigersin==false){
+                calliBot2.motor(C2Motor.rechts,C2Dir.vorwärts, 45)
+                calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 30)
+                basic.pause(400);
+
+                calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+                calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 45)
+                basic.pause(1000)
+
+                calliBot2.motor(C2Motor.rechts,C2Dir.rückwärts, 45)
+                calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+                basic.pause(400);
+
+                calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 10)
+                calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 15)
+                basic.pause(1000)
+
+                while(calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.hell)){
+                    if(calliBot2.entfernung(C2Einheit.cm)<10){
+                        calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 15)
+                        calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 10)
+                        basic.pause(100)
+                    }
+                    else{
+                        calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 10)
+                        calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 15)
+                        basic.pause(10)
+
+                    }
+                }
+                
+                calliBot2.motor(C2Motor.rechts,C2Dir.vorwärts, 45)
+                calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 15)
+                basic.pause(400);
+            }
+           
+            else{
+                calliBot2.motor(C2Motor.rechts,C2Dir.rückwärts, 45)
+                calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+                basic.pause(400);
+
+                calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+                calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 45)
+                basic.pause(1000)
+
+                calliBot2.motor(C2Motor.rechts,C2Dir.vorwärts, 45)
+                calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 30)
+                basic.pause(400);
+
+                calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 10)
+                calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 15)
+                basic.pause(1000)
+
+                while(calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.hell)){
+                    if(calliBot2.entfernung(C2Einheit.cm)<10){
+                        calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 10)
+                        calliBot2.motor(C2Motor.rechts, C2Dir.rückwärts, 15)
+                        basic.pause(100)
+                    }
+                    else{
+                        calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 10)
+                        calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 15)
+                        basic.pause(10)
+
+                    }
+                }
+
+                
+                calliBot2.motor(C2Motor.rechts,C2Dir.rückwärts, 20)
+                calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+                basic.pause(400);
+            }
+        }
+
+        if(calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.hell)){
+            calliBot2.motorStop(C2Motor.rechts, C2Stop.Bremsen)
+            calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+            basic.pause(10)
+            urzeigersin = true
+        }
+        else if(calliBot2.readLineSensor(C2Sensor.rechts, C2SensorStatus.hell)){
+            calliBot2.motorStop(C2Motor.links, C2Stop.Bremsen)
+            calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 30)
+            basic.pause(10)
+            urzeigersin = false;
+        }
+        else{
+            calliBot2.motor(C2Motor.links, C2Dir.vorwärts, 30)
+            calliBot2.motor(C2Motor.rechts, C2Dir.vorwärts, 45)
+            basic.pause(5)
+        }
+    }
+})
+input.onButtonPressed(Button.B, function (){
+    calliBot2.motor(C2Motor.rechts,C2Dir.vorwärts, 45)
+    calliBot2.motor(C2Motor.links, C2Dir.rückwärts, 30)
+    basic.pause(400);
+})
+
+let urzeigersin =false;
